@@ -1,0 +1,15 @@
+runtime_profile:
+  name: local-fast
+  base: prod
+  overrides:
+    io:
+      network: sandbox     # allow local network if needed, or sandboxed
+      storage: local       # use local file system for fast replay
+    concurrency:
+      threads: 2           # can be higher than CI if dev machine allows
+    time:
+      mode: frozen         # freeze time for deterministic tests
+    limits:
+      timeout: 1s          # short timeout for quick feedback
+    feature_flags:
+      new_logic: on        # enable features being actively developed

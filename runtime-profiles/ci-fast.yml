@@ -1,0 +1,15 @@
+runtime_profile:
+  name: ci-fast
+  base: prod
+  overrides:
+    io:
+      network: mock
+      storage: replay
+    concurrency:
+      threads: 1
+    time:
+      mode: frozen
+    limits:
+      timeout: 2s
+    feature_flags:
+      new_logic: on

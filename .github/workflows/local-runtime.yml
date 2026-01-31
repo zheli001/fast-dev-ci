@@ -1,0 +1,14 @@
+name: Local Runtime Fast CI
+
+on:
+  workflow_dispatch:  # manually trigger when needed
+
+jobs:
+  local-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run local runtime profile
+        run: ./ci/runtime.sh --profile runtime-profiles/ci-fast.yml

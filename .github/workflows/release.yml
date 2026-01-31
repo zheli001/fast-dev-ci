@@ -1,0 +1,14 @@
+name: Release CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./ci/build.sh full
+      - run: ./ci/verify.sh full
+      - run: ./ci/deploy.sh

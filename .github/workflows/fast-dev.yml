@@ -1,0 +1,33 @@
+name: Fast Dev CI
+
+on:
+  pull_request:
+  push:
+    branches: [ "dev", "feature/**" ]
+
+jobs:
+  fast-verify:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Step 2: Compute changed scope
+      - name: Compute diff scope
+        run: ./ci/diff-scope.sh
+
+      # Step 3: Restore incremental build cache
+      - name: Restore build cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/build
+          key: fast-${{ env.SCOPE_HASH }}
+
+      # Step 4: Incremental build
+      - name: Incremental build
+        run: ./ci/build.sh $SCOPE
+
+      # Step 5: Fast verification
+      - name: Verify invariants / contracts
+        run: ./ci/verify.sh $SCOPE

@@ -1,5 +1,8 @@
 # Fast Dev CI — Dual-Mode Fast Feedback for Cloud CI/CD
 
+<!-- Status strip -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 > **Fast Dev CI is not a faster deployment pipeline.**
 > It is a layered verification strategy that decouples *developer feedback* from *release deployment*, designed for **GitHub Actions**, **cloud runners**, and **cloud-hosted runtimes**.
 
@@ -12,7 +15,23 @@ This repository provides:
 
 ---
 
-## 1. Problem Statement (Why This Exists)
+## 📋 Table of Contents
+
+- [⚠️ 1. Problem Statement (Why This Exists)](#⚠️-1-problem-statement-why-this-exists)
+- [🎯 2. Core Concept: Dual-Mode Fast Dev CI](#🎯-2-core-concept-dual-mode-fast-dev-ci)
+- [🔄 3. Pipeline Flow Overview](#🔄-3-pipeline-flow-overview)
+- [⚙️ 4. Local Runtime Profile (LRP)](#⚙️-4-local-runtime-profile-lrp)
+- [📁 5. Repository Structure](#📁-5-repository-structure)
+- [🚀 6. GitHub Actions — Mode 1 (Fast Verification)](#🚀-6-github-actions--mode-1-fast-verification)
+- [🏃 7. GitHub Actions — Mode 2 (Local Runtime CI)](#🏃-7-github-actions--mode-2-local-runtime-ci)
+- [❌ 8. What This Is NOT](#❌-8-what-this-is-not)
+- [📈 9. Adoption Strategy](#📈-9-adoption-strategy)
+- [💡 10. Guiding Principle (Final)](#💡-10-guiding-principle-final)
+- [📜 License](#📜-license)
+
+---
+
+## ⚠️ 1. Problem Statement (Why This Exists)
 
 Most teams using GitHub Actions and cloud runtimes face the same reality:
 
@@ -27,7 +46,7 @@ Fast Dev CI addresses this by separating *fast confidence* from *slow certainty*
 
 ---
 
-## 2. Core Concept: Dual-Mode Fast Dev CI
+## 🎯 2. Core Concept: Dual-Mode Fast Dev CI
 
 Fast Dev CI operates in **two complementary modes**.
 
@@ -73,7 +92,7 @@ Mode 2 **never blocks Mode 1**.
 
 ---
 
-## 3. Pipeline Flow Overview
+## 🔄 3. Pipeline Flow Overview
 
 ```
 All Changes
@@ -94,7 +113,7 @@ Release CI / Deployment
 
 ---
 
-## 4. Local Runtime Profile (LRP)
+## ⚙️ 4. Local Runtime Profile (LRP)
 
 Local Runtime Profiles allow **runtime behavior approximation** without production deployment.
 
@@ -131,7 +150,7 @@ Same profile schema is used:
 
 ---
 
-## 5. Repository Structure
+## 📁 5. Repository Structure
 
 ```
 fast-dev-ci/
@@ -155,7 +174,7 @@ fast-dev-ci/
 
 ---
 
-## 6. GitHub Actions — Mode 1 (Fast Verification)
+## 🚀 6. GitHub Actions — Mode 1 (Fast Verification)
 
 ```yaml
 name: fast-dev
@@ -190,7 +209,7 @@ Target duration: **30s – 3min**.
 
 ---
 
-## 7. GitHub Actions — Mode 2 (Local Runtime CI)
+## 🏃 7. GitHub Actions — Mode 2 (Local Runtime CI)
 
 ```yaml
 name: local-runtime-ci
@@ -211,7 +230,7 @@ jobs:
 
 ---
 
-## 8. What This Is NOT
+## ❌ 8. What This Is NOT
 
 * ❌ A replacement for CI/CD
 * ❌ A production deployment shortcut
@@ -219,11 +238,11 @@ jobs:
 
 Fast Dev CI answers only one question:
 
-> **“Is this change worth sending into the slow system?”**
+> **"Is this change worth sending into the slow system?"**
 
 ---
 
-## 9. Adoption Strategy
+## 📈 9. Adoption Strategy
 
 1. Introduce Mode 1 only (low friction)
 2. Reduce Fast CI runtime below 3 minutes
@@ -232,13 +251,13 @@ Fast Dev CI answers only one question:
 
 ---
 
-## 10. Guiding Principle (Final)
+## 💡 10. Guiding Principle (Final)
 
 > **If a change cannot be meaningfully validated without deploying,
 > then validation is in the wrong place.**
 
 ---
 
-## License
+## 📜 License
 
 MIT

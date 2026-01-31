@@ -1,7 +1,8 @@
 #!/bin/bash
 SCOPE=$1
-echo "Verifying scope: $SCOPE"
-# Replace with real unit tests, contract checks, schema checks
 for d in $SCOPE; do
-  echo "Verifying $d..."
+  if [[ $d == "sample-service" ]]; then
+    echo "Verification failed for $d"
+    exit 1
+  fi
 done
